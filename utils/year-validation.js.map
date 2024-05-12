@@ -1,0 +1,1 @@
+{"version":3,"file":"year-validation.js","sourceRoot":"","sources":["../../src/utils/year-validation.ts"],"names":[],"mappings":";;;AAAA,uDAAuD;AAChD,MAAM,WAAW,GAAG,CAAC,IAAY,EAAE,EAAE;IAC1C,qEAAqE;IACrE,IAAI,OAAO,IAAI,KAAK,QAAQ,IAAI,IAAI,IAAI,IAAI,IAAI,EAAE,CAAC,WAAW,EAAE,EAAE,CAAC;QACjE,OAAO,IAAI,CAAC;IACd,CAAC;;QAAM,OAAO,KAAK,CAAC;AACtB,CAAC,CAAC;AALW,QAAA,WAAW,eAKtB"}
