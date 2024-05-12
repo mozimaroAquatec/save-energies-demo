@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const error_handler_1 = __importDefault(require("../utils/error.handler"));
 mongoose_1.default.set("strictQuery", true);
-const mongo_uri = "mongodb+srv://yassinebazouz:AVBAa3lj6ximvone@mymqttcluster.cd7r5wc.mongodb.net/save_energie?retryWrites=true&w=majority&appName=MyMqttCluster";
+const mongo_uri = "mongodb+srv://yassinebazouz:AVBAa3lj6ximvone@mymqttcluster.cd7r5wc.mongodb.net/save_energies_demo?retryWrites=true&w=majority&appName=MyMqttCluster";
 const connectDB = async () => {
     try {
         await mongoose_1.default.connect(process.env.MONGO_URI || mongo_uri);
