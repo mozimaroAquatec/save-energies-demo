@@ -56,6 +56,9 @@ const createEenrgies = async function (req, res) {
             return res.status(400).json({ status: "false", message: "invalid year" });
         // Generate energy records for the specified year
         await energieServices.createAllDatesAndHoursOfYear(year);
+        // const saveEbergies = new Energies({ energies });
+        // await saveEbergies.save();
+        console.log("save energie out");
         return res
             .status(201)
             .json(new success_response_1.SuccessResponse(201, "energies created successfully"));

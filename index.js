@@ -71,7 +71,7 @@ app.use("*", (req, res) => {
     return res.status(404).json(new error_handler_1.default(404, "Page not found"));
 });
 // Starting the server and listening on the specified port
-app.listen(process.env.PORT || 5000, function () {
-    console.log(`Server is running on port ${process.env.PORT || 5000}`);
+app.listen(process.env.PORT || 3000, function () {
+    console.log(`Server is running on port ${process.env.PORT || 3000}`);
 });
 //# sourceMappingURL=index.js.map

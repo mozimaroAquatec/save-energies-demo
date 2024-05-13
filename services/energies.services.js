@@ -14,6 +14,7 @@ const error_handler_1 = __importDefault(require("../utils/error.handler"));
  */
 const createAllDatesAndHoursOfYear = async (year) => {
     try {
+        const ennergies = [];
         for (let month = 0; month < 12; month++) {
             const startDate = new Date(year, month, 1); // First day of the current month
             const endDate = new Date(year, month + 1, 0); // Last day of the current month
@@ -24,11 +25,9 @@ const createAllDatesAndHoursOfYear = async (year) => {
                 console.log(`date: ${year}/${currentMonth}/${day}`);
                 // Log the hours from 0 to 23
                 for (let hour = 0; hour < 24; hour++) {
-                    // console.log(` hour < 10: ${hour < 10}`);
-                    // Extract hour and format it with leading zero if necessary
                     const formattedHour = hour < 10 ? "0" + hour : hour;
                     console.log(` hour : ${formattedHour}`);
-                    await energie_model_1.default.create({
+                    ennergies.push({
                         year,
                         month: currentMonth,
                         date,
@@ -37,8 +36,11 @@ const createAllDatesAndHoursOfYear = async (year) => {
                 }
                 // Add a separator for the next day
                 console.log("\nnext day\n");
+                // return ennergies;
             }
         }
+        await energie_model_1.default.insertMany(ennergies);
+        console.log("save energie to db");
     }
     catch (error) {
         throw new error_handler_1.default(500, `createAllDatesAndHoursOfYear : ${error}`);
@@ -94,6 +96,7 @@ const generateDatesAndHoursOfMonth = async (year, month) => {
     try {
         // Determine the last day of the current month
         const lastDayOfMonth = new Date(year, month, 0).getDate();
+        const energies = [];
         for (let day = 1; day <= lastDayOfMonth; day++) {
             const date = `${year}/${month}/${day}`;
             // Log the hours from 0 to 23
@@ -101,15 +104,16 @@ const generateDatesAndHoursOfMonth = async (year, month) => {
                 const formattedHour = hour < 10 ? "0" + hour : hour;
                 console.log(`date: ${date}`);
                 console.log(` hour : ${formattedHour}`);
-                await energie_model_1.default.create({
-                    year,
-                    month,
-                    date,
-                    time: formattedHour,
-                });
+                energies.push({ year, month, date, time: formattedHour });
             }
             console.log("\nnext day\n");
         }
+        await energie_model_1.default.insertMany(energies);
+        console.log("energies saved");
+        // console.log("energies", energies);
+        // const newEnergies = new Energies({ energies });
+        // const savedUser = await newEnergies.save();
+        // console.log("data save", energies);
     }
     catch (error) {
         throw new error_handler_1.default(500, `generateDatesAndHoursOfMonth: ${error}`);
